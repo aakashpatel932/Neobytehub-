@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeoByte Hub</title>
+<style>
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg,#2a003f,#0a0f29);
+  scroll-behavior: smooth;
+}
+
+/* Header & Navigation */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #000000; /* Pure black header */
+}
+header img {
+  height: 60px;
+  width: auto;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+header img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #00FFD5, 0 0 15px #8A2BE2;
+}
+nav {
+  display: flex;
+  gap: 15px;
+}
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+  font-size: 14px;
+  cursor: pointer;
+}
+nav a:hover {
+  background:#9d4dff;
+  color:#000;
+  box-shadow:0 0 8px #9d4dff;
+}
+
+/* Sections */
+.sections {padding:60px 20px;}
+.section {
+  background: rgba(0,0,0,0.6);
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 900px;
+  box-shadow: 0 0 20px rgba(157,77,255,0.5);
+  transition: transform 0.3s;
+}
+.section:hover {transform:translateY(-5px);}
+.section h2 {color:#9d4dff;margin-bottom:15px;text-shadow:0 0 10px #9d4dff;}
+.section p {color:#ccc;}
+.cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: linear-gradient(90deg,#8A2BE2,#00FFD5);
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  cursor:pointer;
+}
+.cta-button:hover {box-shadow:0 0 15px #8A2BE2,0 0 25px #00FFD5;}
+
+/* Device Section */
+#deviceList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: auto;
+}
+#deviceList button {
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#8A2BE2,#00FFD5);
+  color: black;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+  min-width: 150px;
+}
+#deviceList button:hover {box-shadow:0 0 20px #8A2BE2,0 0 40px #00FFD5;transform:scale(1.05);}
+
+/* Pages */
+.pageContent {
+  display: none;
+  padding: 40px;
+  max-width: 900px;
+  margin:auto;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(157,77,255,0.5);
+}
+.pageContent img, .pageContent video {
+  border-radius:8px;
+  max-width:100%;
+  margin:10px 5px;
+}
+
+/* Responsive Videos */
+.responsive-video {
+  border-radius: 8px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+@media (max-width: 768px) {
+  .responsive-video { max-width: 95%; }
+}
+
+/* Combo Cards */
+.combo-card {
+  background: rgba(157,77,255,0.2);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #8A2BE2,0 0 25px #00FFD5;
+}
+.combo-card b {color:#00FFD5;}
+button.backBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#8A2BE2;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  display: none;
+}
+button.backBtn:hover {background:#00FFD5;color:#000;}
+
+footer {text-align:center; padding:15px; background: #000000;} /* Pure black footer */
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div>
+        <img src="images/logo.jpg" alt="Logo">
+    </div>
+    <nav>
+        <a href="#home">Home</a>
+        <a id="openContactNav">Contact</a>
+        <a id="openInfoNav">Info</a>
+    </nav>
+</header>
+
+<!-- Banner Image -->
+<div style="text-align: center; padding: 15px 0; background: rgba(0,0,0,0.6);">
+    <img src="images/banner.jpg" alt="Welcome to Neobytehub" style="max-width: 90%; height: auto; border-radius: 10px; box-shadow: 0 0 20px rgba(157,77,255,0.8);">
+</div>
+
+<div id="mainContent">
+  <section class="sections" id="home">
+    <div class="section">
+      <h2>🎮 Custom HUD</h2>
+      <p>Learn the best custom HUD setups for fast reflexes and smooth controls in Free Fire.</p>
+      <a class="cta-button" id="openHUDBtn">Open Custom HUD</a>
+    </div>
+    <div class="section">
+      <h2>🎯 Best Sensitivity for Device</h2>
+      <p>Click below to select your device and get Instagram DM for optimized sensitivity!</p>
+      <a class="cta-button" id="openDevicesBtn">Open Device Sensitivity</a>
+    </div>
+    <div class="section">
+      <h2>🧑‍🚀 Character Combination</h2>
+      <p>Discover the strongest character skill combinations to gain an edge in battles.</p>
+      <a class="cta-button" id="showCombinationBtn">Show Best Combination</a>
+      <div id="comboResult"></div>
+    </div>
+    <div class="section">
+      <h2>💡 Tips and Tricks</h2>
+      <p>Pro-level Free Fire tips and tricks that will make you a better player.</p>
+      <a class="cta-button" id="openTipsBtn">Watch Tips Video</a>
+    </div>
+    <div class="section">
+      <h2>⭐ Freestyle Names for Free Fire</h2>
+      <p>Find the coolest, most stylish and unique names to stand out in the game!</p>
+      <a class="cta-button" id="openNamesBtn">Get Names Ideas</a>
+    </div>
+    <div class="section">
+      <h2>🔥 Tricks Gameplay</h2>
+      <p>Advanced gameplay strategies and hidden tricks to dominate ranked matches.</p>
+      <a class="cta-button" id="openGameplayBtn">Watch Gameplay Tricks</a>
+    </div>
+  </section>
+</div>
+
+<!-- Pages -->
+
+<!-- HUD Page -->
+<div id="hudPage" class="pageContent">
+  <h2>🎮 Custom HUD Layouts</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+    <img src="images/custom1.jpg" alt="HUD1">
+    <img src="images/custom2.jpg" alt="HUD2">
+    <img src="images/custom3.jpg" alt="HUD3">
+    <img src="images/custom4.jpg" alt="HUD4">
+  </div>
+  <button class="backBtn" id="backHUD">⬅ Back</button>
+</div>
+
+<!-- Sensitivity Page -->
+<div id="sensitivityPage" class="pageContent">
+  <h2>🎯 Device Sensitivity</h2>
+  <p>Select your device below:</p>
+  <div id="deviceList"></div>
+  <button class="backBtn" id="backSensitivity">⬅ Back</button>
+</div>
+
+<!-- Character Page -->
+<div id="characterPage" class="pageContent">
+  <h2>🧑‍🚀 Character Combinations</h2>
+  <div id="comboResultPage"></div>
+  <button class="backBtn" id="backCharacter">⬅ Back</button>
+</div>
+
+<!-- Tips Page -->
+<div id="tipsPage" class="pageContent">
+  <h2>💡 Tips and Tricks</h2>
+  <video controls class="responsive-video">
+    <source src="videos/video1.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+  <button class="backBtn" id="backTips">⬅ Back</button>
+</div>
+
+<!-- Names Page -->
+<div id="namesPage" class="pageContent">
+  <h2>⭐ Get Your Freestyle Name!</h2>
+  <img src="images/freestyle.jpg" alt="Freestyle Names Example" style="margin-bottom: 20px;">
+  <p style="text-align: center; color: #00FFD5; font-size: 18px; margin-top: 15px;">
+1  ALPhA GREY<br>
+2  DIROX KLY<br>
+3  zZz ZIPPING +555<br>
+4  CwROLEX 444<br>
+5  CoSTa 5F<br>
+6  WINKAS Hzx<br>
+7  FRuX ExV<br>
+8  MONIx XpY<br>
+9  ChASPER<br>
+10 LOs PENiX xpi<br>
+11 The GOAD Xz?<br>
+15 BORYx 444<br>
+16 REMON PRAX<br>
+17 xXx GAROTO<br>
+18 ZADX!PRO?<br>
+19 SPIDER xXx<br>
+20 Mw4x!N Mvp?<br>
+21 ChITOS PRAY<br>
+22 444 BION SLax<br>
+23 hUGO 888 STL
+  </p>
+  <button class="backBtn" id="backNames">⬅ Back</button>
+</div>
+
+<!-- Gameplay Page -->
+<div id="gameplayPage" class="pageContent">
+  <h2>🔥 Tricks Gameplay</h2>
+  <video controls class="responsive-video">
+    <source src="videos/video2.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+  <button class="backBtn" id="backGameplay">⬅ Back</button>
+</div>
+
+<!-- Contact Page -->
+<div id="contactPage" class="pageContent">
+  <h2>📱 Contact Me</h2>
+  <p>Click the button below to DM me on Instagram:</p>
+  <a class="cta-button" href="https://www.instagram.com/yng.tobii" target="_blank">Instagram DM</a>
+  <button class="backBtn" id="backContact">⬅ Back</button>
+</div>
+
+<!-- Info Page -->
+<div id="infoPage" class="pageContent">
+  <h2>ℹ About Me</h2>
+  <p style="color:#ccc; font-size:16px; line-height:1.5;">
+    Hi, I'm Aakash Patel, creator of NeoByte Hub. I love gaming, building websites, and sharing tips & tricks for Free Fire.  
+    This website is designed to help players improve their gameplay and have fun!
+    <div></div>
+    <b>IMPORTANT NOTE:</b> Ye mera first website hai. Agar koi bug ya error mile, please inform karein.
+  </p>
+  <button class="backBtn" id="backInfo">⬅ Back</button>
+</div>
+
+<footer>© 2025 Powered by NeoByte | Created by Aakash Patel
+<p>All rights reserved. Free Fire tips and guidance for educational purposes only.</p></footer>
+<script>
+
+// Main Elements
+const mainContent = document.getElementById("mainContent");
+const hudPage = document.getElementById("hudPage");
+const sensitivityPage = document.getElementById("sensitivityPage");
+const characterPage = document.getElementById("characterPage");
+const tipsPage = document.getElementById("tipsPage");
+const namesPage = document.getElementById("namesPage");
+const gameplayPage = document.getElementById("gameplayPage");
+const contactPage = document.getElementById("contactPage");
+const infoPage = document.getElementById("infoPage");
+
+// Device List
+const devices = ["iPhone 12","iPhone 12 Mini","iPhone 12 Pro","iPhone 12 Pro Max",
+"Samsung S20","Samsung S21","Samsung S22","Samsung S23","Samsung S24",
+"Xiaomi Mi 11","Xiaomi Mi 12","Xiaomi Mi 13",
+"Redmi Note 10","Redmi Note 11","Redmi Note 12","Redmi Note 13",
+"Poco X3","Poco X4 Pro","Poco F4","Poco F5",
+"OnePlus 9","OnePlus 10","OnePlus 11",
+"Realme 8","Realme 9","Realme 10",
+"Oppo Reno 6","Oppo Reno 7","Oppo Reno 8",
+"Vivo V21","Vivo V23","Vivo V25","others device"
+];
+const instaLink = "https://www.instagram.com/yng.tobii";
+const deviceListDiv = document.getElementById("deviceList");
+devices.forEach(device => {
+  const btn = document.createElement("button");
+  btn.innerText = device;
+  btn.onclick = () => window.open(instaLink + "?text=" + encodeURIComponent("My device is " + device), "_blank");
+  deviceListDiv.appendChild(btn);
+});
+
+// Character Combinations
+const combinations = [
+  {char1:"1. BR RANK COMBINATIONS", char2:"", combo:"<br>1.TATSUYA + ANTONIO + HAYATO + FORD<br>2.IRAS + KAIROS + NARI + MARO<br>ORION + KIAROS + LUNA + MIGUEL<br>3.WUKONG + KAIROS + LUQUETO + LEON/MAXIM<br>4.K + KAIROS + HAYATO + J BIEBS<br>5.TATSUYA + KAIROS + MARO + MISHA"},
+  {char1:"2. SNIPER SKILL", char2:"", combo:"<br>1.WUKONG + LAURA + RAFAEL + MOCO<br>2.SUZY + RAFAEL + LAURA + IRAS"},
+  {char1:"3. CS RANK COMBINATIONS", char2:"", combo:"<br>1.WOLFRAHH + KAIROS + MIGUEL + ORION<br>2.LUNA + WUKONG + OTHO + DE-BEE<br>3.TATSUYA + HAYATO + JOTA + LUNA<br>4.HAYATO + JOTA + WOLFRAHH + TATSUYA"},
+  {char1:"4. IMMORTAL SKILL", char2:"", combo:"<br>1.ORION + MIGUEL + KAIROS + JOTA<br>2.HAYATO + JOTA + WOLFRAHH + TATSUTYA"},
+  {char1:"5. NEDAR GRENADE SKILL", char2:"", combo:"<br>1.CLU + ALVARO + LEON + ANTONIO<br>2.RYDEN + ALVARO + WOLFRAHH + KLA"},
+  {char1:"6. 420 HEALTH TRICK SKILL", char2:"", combo:"<br>1.XAYNE + SHANI + ANTONIO + LUQUETA"},
+  {char1:"7. TEMMATE HEALING SKILL", char2:"", combo:"<br>1.KASSIE + OLIVIA + KAPELLA + FORD"},
+  {char1:"8. EASY HEADSHOT SKILL", char2:"", combo:"<br>1.WUKONG + KAIROS + DASHA + LUNA"},
+  {char1:"9. DEADLY SKILL", char2:"", combo:"<br>1.SKYLER + KAIROS + RAFAEL + MARO<br>2.RAFAEL + NAKITA + ORION + MIGUEL"}
+];
+
+// Navigation Functions
+function showPage(page, backBtnId){
+  mainContent.style.display = "none";
+  page.style.display = "block";
+  document.getElementById(backBtnId).style.display = "inline-block";
+  page.scrollIntoView({behavior:"smooth"});
+}
+function hidePage(page, backBtnId){
+  page.style.display = "none";
+  mainContent.style.display = "block";
+  document.getElementById(backBtnId).style.display = "none";
+  document.getElementById("home").scrollIntoView({behavior:"smooth"});
+}
+
+// HUD
+document.getElementById("openHUDBtn").onclick = () => showPage(hudPage,"backHUD");
+document.getElementById("backHUD").onclick = () => hidePage(hudPage,"backHUD");
+
+// Sensitivity
+document.getElementById("openDevicesBtn").onclick = () => showPage(sensitivityPage,"backSensitivity");
+document.getElementById("backSensitivity").onclick = () => hidePage(sensitivityPage,"backSensitivity");
+
+// Character
+document.getElementById("showCombinationBtn").onclick = () => {
+  const comboDiv = document.getElementById("comboResultPage");
+  comboDiv.innerHTML = combinations.map(c => `<div class="combo-card"><b>${c.char1} + ${c.char2}</b>: ${c.combo}</div>`).join('');
+  showPage(characterPage,"backCharacter");
+};
+document.getElementById("backCharacter").onclick = () => hidePage(characterPage,"backCharacter");
+
+// Tips
+document.getElementById("openTipsBtn").onclick = () => showPage(tipsPage,"backTips");
+document.getElementById("backTips").onclick = () => hidePage(tipsPage,"backTips");
+
+// Names
+document.getElementById("openNamesBtn").onclick = () => showPage(namesPage,"backNames");
+document.getElementById("backNames").onclick = () => hidePage(namesPage,"backNames");
+
+// Gameplay
+document.getElementById("openGameplayBtn").onclick = () => showPage(gameplayPage,"backGameplay");
+document.getElementById("backGameplay").onclick = () => hidePage(gameplayPage,"backGameplay");
+
+// Contact & Info
+document.getElementById("openContactNav").onclick = () => showPage(contactPage,"backContact");
+document.getElementById("backContact").onclick = () => hidePage(contactPage,"backContact");
+document.getElementById("openInfoNav").onclick = () => showPage(infoPage,"backInfo");
+document.getElementById("backInfo").onclick = () => hidePage(infoPage,"backInfo");
+
+// Home Smooth Scroll
+document.querySelector('nav a[href="#home"]').onclick = (e) => {
+  e.preventDefault();
+  document.getElementById("home").scrollIntoView({behavior:"smooth"});
+};
+</script>
+
+</body>
+</html>
